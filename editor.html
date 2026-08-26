@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>夥伴頁面編輯器｜消費變現模式</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#f2ead7;--paper:#fffdf6;--paper-2:#fdf8ec;--espresso:#453221;--brown:#6b573b;--muted:#8b7a60;--gold:#a87c1c;--gold-2:#bd8e28;--tan:#ecdcb4;--tan-line:#e7d9b7;--radius:18px;--shadow:0 16px 34px -22px rgba(69,50,33,.5)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Noto Sans TC",system-ui,sans-serif;color:var(--espresso);background:var(--cream);line-height:1.7;padding:0 0 60px}
+.top{background:var(--espresso);color:#fff;padding:16px 22px;display:flex;align-items:center;gap:10px}
+.top .dot{width:30px;height:30px;border-radius:9px;background:var(--gold);display:grid;place-items:center;font-family:"Poppins";font-weight:700}
+.top h1{font-size:1.05rem;font-weight:900}
+.top small{display:block;font-size:.68rem;color:#cbb894;font-weight:400;font-family:"Poppins";letter-spacing:.05em}
+.wrap{max-width:640px;margin:26px auto;padding:0 20px}
+.card{background:var(--paper);border:1px solid var(--tan-line);border-radius:var(--radius);padding:24px 22px;box-shadow:var(--shadow);margin-bottom:20px}
+h2{font-size:1.15rem;font-weight:900;margin-bottom:4px}
+.hint{color:var(--muted);font-size:.88rem;margin-bottom:18px}
+.field{margin-bottom:16px}
+.field label{display:block;font-size:.86rem;font-weight:700;margin-bottom:7px}
+.field label .opt{color:var(--muted);font-weight:400}
+.field input,.field textarea{width:100%;font-family:inherit;font-size:1rem;color:var(--espresso);padding:12px 14px;border:1.5px solid var(--tan-line);border-radius:12px;background:var(--paper-2)}
+.field textarea{resize:vertical;min-height:64px}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 4px rgba(168,124,28,.15);background:#fff}
+.row{display:flex;gap:14px;flex-wrap:wrap}
+.row .field{flex:1;min-width:140px}
+.locked{color:var(--muted);font-size:.82rem;background:var(--paper-2);border:1px dashed var(--tan-line);border-radius:12px;padding:12px 14px}
+.color-row{display:flex;align-items:center;gap:12px}
+.color-row input[type=color]{width:52px;height:44px;padding:0;border:1.5px solid var(--tan-line);border-radius:10px;background:none;cursor:pointer}
+.color-row input[type=text]{max-width:130px}
+.avatar-row{display:flex;align-items:center;gap:16px}
+.avatar-prev{width:76px;height:76px;border-radius:50%;overflow:hidden;background:var(--tan);display:grid;place-items:center;border:3px solid #fff;box-shadow:0 8px 18px -10px rgba(69,50,33,.5);flex:0 0 auto}
+.avatar-prev img{width:100%;height:100%;object-fit:cover}
+.avatar-prev span{font-weight:900;font-size:1.7rem;color:var(--gold)}
+.slug-row{display:flex;align-items:center}
+.slug-row .pfx{color:var(--muted);font-size:.9rem;white-space:nowrap;padding-right:6px}
+.slug-status{font-size:.82rem;margin-top:6px;min-height:1em}
+.btn{font-family:inherit;font-size:1rem;font-weight:900;cursor:pointer;border:none;color:#fff;background:var(--gold);padding:14px 24px;border-radius:14px;display:inline-flex;align-items:center;gap:8px;transition:background .18s,transform .18s}
+.btn:hover{background:#916a15;transform:translateY(-2px)}
+.btn.block{width:100%;justify-content:center}
+.btn.ghost{background:none;color:var(--gold-2);border:1.5px solid var(--tan-line)}
+.btn.ghost:hover{background:var(--paper-2);color:var(--gold)}
+.btn.g{background:#fff;color:#3c4043;border:1px solid #dadce0;font-weight:700}
+.share{background:var(--paper-2);border:1px solid var(--tan-line);border-radius:12px;padding:14px 16px;word-break:break-all;font-size:.92rem;margin-top:10px}
+.share a{color:var(--gold-2);font-weight:700}
+.msg{padding:12px 16px;border-radius:12px;font-size:.9rem;margin-bottom:16px;display:none}
+.msg.ok{background:#e8f5ea;color:#276b34;display:block}
+.msg.err{background:#fbe9e7;color:#a3392b;display:block}
+.center{text-align:center}
+.signed{display:flex;align-items:center;gap:10px;justify-content:space-between;background:var(--paper-2);border:1px solid var(--tan-line);border-radius:12px;padding:10px 14px;font-size:.9rem;margin-bottom:18px}
+.signed b{color:var(--espresso)}
+.link-btn{background:none;border:none;color:var(--gold-2);font-family:inherit;font-size:.88rem;cursor:pointer;text-decoration:underline}
+#gate{display:block}#app{display:none}
+</style>
+</head>
+<body>
+<div class="top"><span class="dot">M</span><div><h1>夥伴頁面編輯器<small>MAMATU · Partner Editor</small></h1></div></div>
+
+<div class="wrap">
+  <!-- 登入前 -->
+  <div id="gate" class="card center">
+    <h2>先登入，建立你的專屬頁面</h2>
+    <p class="hint">用 Google 登入，之後隨時回來都能編輯同一頁。</p>
+    <button class="btn g" id="signin">使用 Google 登入</button>
+    <p class="msg err" id="gateErr"></p>
+  </div>
+
+  <!-- 登入後 -->
+  <div id="app">
+    <div class="signed"><span>已登入：<b id="who"></b></span><button class="link-btn" id="signout">登出</button></div>
+    <p class="msg" id="msg"></p>
+
+    <div class="card">
+      <h2>可自訂的內容</h2>
+      <p class="hint">這些是你可以改成自己的；其餘課程文案為公版，維持一致。</p>
+
+      <div class="avatar-row field">
+        <div class="avatar-prev" id="avPrev"><span id="avInit">你</span></div>
+        <div style="flex:1">
+          <label>大頭貼 <span class="opt">(建議正方形，3MB 內)</span></label>
+          <input type="file" id="avatar" accept="image/*">
+        </div>
+      </div>
+
+      <div class="field">
+        <label>名稱 <span class="opt">(會顯示在「由 ___ 邀請你加入」「___ 的消費變現模式」「___ N 年陪跑系統」)</span></label>
+        <input type="text" id="name" placeholder="例如：杜媽 / Jimmy" maxlength="20">
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label>英文品牌字 <span class="opt">(頁尾)</span></label>
+          <input type="text" id="brandEN" placeholder="MAMATU" maxlength="24">
+        </div>
+        <div class="field">
+          <label>你走了幾年 <span class="opt">(N 年陪跑系統)</span></label>
+          <input type="text" id="years" placeholder="10" maxlength="4">
+        </div>
+      </div>
+
+      <div class="field">
+        <label>主色</label>
+        <div class="color-row">
+          <input type="color" id="color" value="#a87c1c">
+          <input type="text" id="colorHex" value="#a87c1c" maxlength="7">
+          <span class="hint" style="margin:0">按鈕、重點、標籤都會跟著換色</span>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>LINE 加好友連結</label>
+        <input type="text" id="line" placeholder="https://line.me/ti/p/你的ID 或 https://lin.ee/xxxx">
+      </div>
+
+      <div class="field">
+        <label>收件 Email <span class="opt">(有人填表就寄到這裡)</span></label>
+        <input type="email" id="email" placeholder="you@example.com">
+      </div>
+
+      <div class="field">
+        <label>一句個人開場白 <span class="opt">(選填，顯示在首頁上方)</span></label>
+        <textarea id="intro" placeholder="例如：我是兩個孩子的媽，用零碎時間走這條路第 3 年。" maxlength="60"></textarea>
+      </div>
+
+      <div class="field">
+        <label>專屬網址代號 <span class="opt">(英數/連字號，例如 jimmy)</span></label>
+        <div class="slug-row"><input type="text" id="slug" placeholder="jimmy" maxlength="30"></div>
+        <div class="slug-status" id="slugStatus"></div>
+      </div>
+
+      <p class="locked">公版鎖定(不可改)：消費變現三步驟、美安是什麼、零經驗流程、日常消費、適合誰、Q&amp;A、小測驗題目——維持品牌與合規一致。</p>
+    </div>
+
+    <div class="card">
+      <button class="btn block" id="save">儲存並產生我的頁面</button>
+      <div id="shareBox" style="display:none">
+        <div class="share">你的專屬頁面：<a id="shareLink" href="#" target="_blank"></a></div>
+        <div class="row" style="margin-top:12px">
+          <button class="btn ghost" id="copyLink">複製連結</button>
+          <a class="btn ghost" id="openPage" href="#" target="_blank">開啟預覽</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged }
+  from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import { getFirestore, doc, getDoc, setDoc, collection, query, where, getDocs, limit }
+  from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import { getStorage, ref, uploadBytes, getDownloadURL }
+  from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
+import { firebaseConfig } from "./firebase-config.js";
+
+const app=initializeApp(firebaseConfig);
+const auth=getAuth(app), db=getFirestore(app), storage=getStorage(app);
+let uid=null, avatarUrl="";
+
+const $=id=>document.getElementById(id);
+const TEMPLATE_URL = location.href.replace(/editor\.html.*$/,'') + 'template.html';
+
+/* ---------- 登入 ---------- */
+$('signin').onclick=async()=>{ try{ await signInWithPopup(auth,new GoogleAuthProvider()); }catch(e){ $('gateErr').textContent='登入失敗：'+e.message; } };
+$('signout').onclick=()=>signOut(auth);
+onAuthStateChanged(auth,async u=>{
+  if(u){ uid=u.uid; $('gate').style.display='none'; $('app').style.display='block'; $('who').textContent=u.displayName||u.email; await loadExisting(); }
+  else{ uid=null; $('gate').style.display='block'; $('app').style.display='none'; }
+});
+
+/* ---------- 載入既有設定 ---------- */
+async function loadExisting(){
+  const ds=await getDoc(doc(db,'partners',uid));
+  const priv=await getDoc(doc(db,'partners_private',uid));
+  if(ds.exists()){
+    const d=ds.data();
+    $('name').value=d.name||''; $('brandEN').value=d.brandEN||''; $('years').value=d.years||'';
+    $('color').value=d.color||'#a87c1c'; $('colorHex').value=d.color||'#a87c1c';
+    $('line').value=d.line||''; $('intro').value=d.intro||''; $('slug').value=d.slug||'';
+    avatarUrl=d.avatarUrl||''; if(avatarUrl){ $('avPrev').innerHTML=`<img src="${avatarUrl}">`; }
+    updatePreview();
+    if(d.slug||uid) showShare(d.slug||uid);
+  }
+  if(priv.exists()) $('email').value=priv.data().email||'';
+}
+
+/* ---------- 即時預覽(頭貼字/顏色) ---------- */
+function updatePreview(){
+  const name=$('name').value.trim()||'你';
+  if(!avatarUrl) $('avPrev').innerHTML=`<span id="avInit">${name.slice(0,1)}</span>`;
+}
+$('name').addEventListener('input',updatePreview);
+$('color').addEventListener('input',e=>{ $('colorHex').value=e.target.value; });
+$('colorHex').addEventListener('input',e=>{ if(/^#[0-9a-fA-F]{6}$/.test(e.target.value)) $('color').value=e.target.value; });
+
+/* ---------- 大頭貼上傳 ---------- */
+$('avatar').onchange=async e=>{
+  const file=e.target.files[0]; if(!file) return;
+  if(file.size>3*1024*1024){ setMsg('照片太大了，請壓到 3MB 內','err'); return; }
+  setMsg('上傳中…','ok');
+  try{
+    const r=ref(storage,`avatars/${uid}/${Date.now()}_${file.name}`);
+    await uploadBytes(r,file); avatarUrl=await getDownloadURL(r);
+    $('avPrev').innerHTML=`<img src="${avatarUrl}">`; setMsg('照片已上傳','ok');
+  }catch(err){ console.error(err); setMsg('上傳失敗：'+err.message,'err'); }
+};
+
+/* ---------- slug 可用性檢查 ---------- */
+let slugTimer;
+$('slug').addEventListener('input',()=>{
+  clearTimeout(slugTimer); const v=$('slug').value.trim().toLowerCase();
+  $('slug').value=v;
+  if(!v){ $('slugStatus').textContent=''; return; }
+  if(!/^[a-z0-9-]+$/.test(v)){ $('slugStatus').textContent='只能用英文小寫、數字、連字號'; $('slugStatus').style.color='#a3392b'; return; }
+  $('slugStatus').textContent='檢查中…'; $('slugStatus').style.color='#8b7a60';
+  slugTimer=setTimeout(async()=>{
+    const qs=await getDocs(query(collection(db,'partners'),where('slug','==',v),limit(1)));
+    const taken=!qs.empty && qs.docs[0].id!==uid;
+    $('slugStatus').textContent=taken?'這個代號有人用了，換一個吧':'可以使用 ✓';
+    $('slugStatus').style.color=taken?'#a3392b':'#276b34';
+  },400);
+});
+
+/* ---------- 儲存 ---------- */
+$('save').onclick=async()=>{
+  const name=$('name').value.trim();
+  const email=$('email').value.trim();
+  const slug=$('slug').value.trim().toLowerCase();
+  if(!name){ setMsg('請填名稱','err'); return; }
+  if(!email){ setMsg('請填收件 Email','err'); return; }
+  if(slug && !/^[a-z0-9-]+$/.test(slug)){ setMsg('網址代號格式不對','err'); return; }
+  // slug 佔用檢查
+  if(slug){
+    const qs=await getDocs(query(collection(db,'partners'),where('slug','==',slug),limit(1)));
+    if(!qs.empty && qs.docs[0].id!==uid){ setMsg('網址代號被用走了，換一個','err'); return; }
+  }
+  const color=/^#[0-9a-fA-F]{6}$/.test($('colorHex').value)?$('colorHex').value:'#a87c1c';
+  try{
+    await setDoc(doc(db,'partners',uid),{
+      name, brandEN:$('brandEN').value.trim()||'MAMATU', years:$('years').value.trim()||'10',
+      color, avatarUrl, line:$('line').value.trim(), intro:$('intro').value.trim(),
+      slug: slug||'', updatedAt: Date.now()
+    },{merge:true});
+    await setDoc(doc(db,'partners_private',uid),{ email },{merge:true});
+    setMsg('已儲存！你的頁面連結在下面 👇','ok');
+    showShare(slug||uid);
+  }catch(e){ console.error(e); setMsg('儲存失敗：'+e.message,'err'); }
+};
+
+function showShare(id){
+  const url=`${TEMPLATE_URL}?p=${id}`;
+  $('shareBox').style.display='block';
+  $('shareLink').textContent=url; $('shareLink').href=url; $('openPage').href=url;
+  $('copyLink').onclick=async()=>{ try{ await navigator.clipboard.writeText(url); setMsg('連結已複製','ok'); }catch(e){} };
+}
+function setMsg(t,type){ const m=$('msg'); m.textContent=t; m.className='msg '+type; }
+</script>
+</body>
+</html>

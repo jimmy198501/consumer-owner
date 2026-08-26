@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>杜媽的消費變現模式 · MAMATU</title>
+<meta name="description" content="消費，不一定只是支出。從消費者到經營者，杜媽 10 年陪跑系統，帶你從消費 → 分享 → 零售 → 回購 → 經營。" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+/* 本頁為公版模板，內容由夥伴設定動態帶入 */
+:root{
+  --cream:#f2ead7;      /* 主背景 */
+  --cream-2:#f7f1e4;    /* 淺條紋 */
+  --paper:#fffdf6;      /* 白卡 */
+  --paper-2:#fdf8ec;    /* 次卡 */
+  --espresso:#453221;   /* 深褐標題 */
+  --brown:#6b573b;      /* 次標／內文強 */
+  --muted:#8b7a60;      /* 淡文字 */
+  --gold:#a87c1c;       /* 深金褐：編號徽章 */
+  --gold-2:#bd8e28;     /* 金字：重點／callout */
+  --gold-soft:#f3e3b6;  /* 淡金 callout 底 */
+  --tan:#ecdcb4;        /* 圓點／柔和點綴 */
+  --tan-line:#e7d9b7;   /* 邊線 */
+  --radius:22px;
+  --shadow:0 16px 34px -22px rgba(69,50,33,.5);
+  --wrap:600px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:"Noto Sans TC",system-ui,-apple-system,sans-serif;
+  color:var(--espresso);line-height:1.7;font-weight:400;overflow-x:hidden;
+  background:
+    repeating-linear-gradient(90deg,var(--cream) 0 13px,var(--cream-2) 13px 26px);
+}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 22px}
+h1,h2,h3{line-height:1.3;letter-spacing:-.01em}
+p{overflow-wrap:break-word}
+
+/* ---- Latin 標籤 ---- */
+.eyebrow{
+  font-family:"Poppins",sans-serif;font-weight:600;font-size:.72rem;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--gold);
+  background:var(--paper-2);border:1px solid var(--tan-line);
+  padding:8px 18px;border-radius:999px;display:inline-block;
+}
+
+/* ---- 邀請人像 ---- */
+.invite{display:flex;flex-direction:column;align-items:center;gap:14px;margin-bottom:20px}
+.avatar{width:100px;height:100px;border-radius:50%;position:relative;overflow:hidden;background:var(--tan);display:grid;place-items:center;box-shadow:0 12px 26px -12px rgba(69,50,33,.5);border:3px solid #fff}
+.avatar img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.avatar span{font-weight:900;font-size:2.1rem;color:var(--gold)}
+.invite-pill{background:var(--paper);border:1px solid var(--tan-line);border-radius:999px;padding:9px 22px;font-size:.98rem;color:var(--brown);box-shadow:0 8px 18px -12px rgba(69,50,33,.4)}
+.invite-pill b{color:var(--gold-2);font-weight:900}
+
+/* ---- 頂欄 ---- */
+.nav{position:sticky;top:0;z-index:60;background:rgba(242,234,215,.9);backdrop-filter:blur(9px);border-bottom:1px solid var(--tan-line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:58px}
+.brand{display:flex;align-items:center;gap:9px;font-weight:900;font-size:.98rem;color:var(--espresso)}
+.brand .dot{width:30px;height:30px;border-radius:9px;background:var(--gold);color:#fff;display:grid;place-items:center;font-family:"Poppins";font-weight:700;font-size:.9rem}
+.brand small{display:block;font-weight:500;font-size:.64rem;color:var(--muted);letter-spacing:.06em;line-height:1;font-family:"Poppins"}
+.nav a.cta{font-size:.85rem;font-weight:700;color:#fff;background:var(--gold);padding:9px 17px;border-radius:999px;text-decoration:none;white-space:nowrap;transition:background .18s,transform .18s}
+.nav a.cta:hover{background:#916a15;transform:translateY(-1px)}
+
+/* ---- 區塊骨架 ---- */
+.slide{padding:46px 0;position:relative;overflow:hidden}
+.slide::before{content:"";position:absolute;top:26px;right:-70px;width:150px;height:150px;border-radius:50%;background:var(--tan);opacity:.5;z-index:0}
+.slide::after{content:"";position:absolute;bottom:40px;left:-46px;width:92px;height:92px;border-radius:50%;background:var(--tan);opacity:.4;z-index:0}
+.slide .wrap{position:relative;z-index:1}
+.shead{display:flex;align-items:center;gap:12px;margin-bottom:26px}
+.num{font-family:"Poppins";font-weight:700;font-size:1.15rem;color:#fff;background:var(--gold);padding:8px 22px;border-radius:999px;line-height:1}
+.slide h2{font-size:clamp(1.85rem,7.6vw,2.5rem);font-weight:900;color:var(--espresso);text-align:center;margin-bottom:6px}
+.slide .sub{color:var(--muted);text-align:center;font-size:1.02rem;margin-bottom:26px}
+.slide .sub.big{font-weight:700;color:var(--brown);font-size:1.15rem;line-height:1.5}
+
+/* ---- callout 金框 ---- */
+.callout{background:var(--gold-soft);border-radius:var(--radius);padding:22px 24px;text-align:center;margin-top:28px}
+.callout b{color:var(--gold-2);font-weight:900;font-size:1.2rem;line-height:1.5;display:block}
+.foot-line{text-align:center;color:var(--muted);margin-top:20px;font-size:.95rem}
+.foot-line.strong{color:var(--espresso);font-weight:900;font-size:1.1rem}
+
+/* ---- 頁尾浮水印 ---- */
+.mark{color:var(--muted);font-family:"Poppins";font-size:.72rem;letter-spacing:.05em;text-align:left;padding:6px 0 0}
+
+/* ---------- Slide 1 Hero ---------- */
+.hero{padding-top:52px}
+.hero h1{font-size:clamp(2.3rem,9.5vw,3.3rem);font-weight:900;text-align:center;margin-bottom:14px}
+.hero .h-sub{text-align:center;font-weight:900;font-size:clamp(1.2rem,5.4vw,1.6rem);color:var(--brown);line-height:1.4;margin-bottom:26px}
+.hero .body{text-align:center;color:var(--muted);font-size:1.05rem;line-height:1.9;margin-bottom:8px}
+
+/* ---------- 3 步驟(直向卡) ---------- */
+.stack{display:grid;gap:14px}
+.rowcard{background:var(--paper);border:1px solid var(--tan-line);border-radius:18px;padding:20px 20px 20px 18px;display:flex;gap:16px;align-items:center;box-shadow:0 12px 26px -22px rgba(69,50,33,.6)}
+.rowcard .circle{flex:0 0 auto;width:52px;height:52px;border-radius:50%;background:var(--tan);color:var(--gold);font-family:"Poppins";font-weight:700;display:grid;place-items:center;font-size:1.05rem}
+.rowcard h3{font-size:1.15rem;font-weight:900;color:var(--espresso);margin-bottom:2px}
+.rowcard p{font-size:.94rem;color:var(--muted)}
+
+/* ---------- 2欄格 ---------- */
+.grid2{display:grid;gap:14px}
+@media(min-width:520px){.grid2{grid-template-columns:1fr 1fr}}
+.cell{background:var(--paper);border:1px solid var(--tan-line);border-radius:18px;padding:22px 18px;text-align:center}
+.cell h3{font-size:1.12rem;font-weight:900;color:var(--espresso);margin-bottom:8px}
+.cell p{font-size:.92rem;color:var(--muted);line-height:1.6}
+/* 帶編號的格子(slide 04/05 flow) */
+.cell.numbered{display:flex;gap:14px;align-items:flex-start;text-align:left}
+.cell.numbered .circle{flex:0 0 auto;width:40px;height:40px;border-radius:50%;background:var(--tan);color:var(--gold);font-family:"Poppins";font-weight:700;display:grid;place-items:center;font-size:.95rem}
+.cell.numbered h3{margin-bottom:2px}
+
+/* ---------- 6步陪跑系統(橫向流程) ---------- */
+.flow{display:flex;gap:12px;overflow-x:auto;padding:4px 2px 14px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+.flow::-webkit-scrollbar{height:6px}
+.flow::-webkit-scrollbar-thumb{background:var(--tan);border-radius:99px}
+.fstep{flex:0 0 128px;scroll-snap-align:start;background:var(--paper);border:1px solid var(--tan-line);border-radius:18px;padding:18px 12px;text-align:center}
+.fstep .fn{font-family:"Poppins";font-weight:700;color:var(--gold);font-size:.95rem}
+.fstep .fdot{width:40px;height:40px;border-radius:50%;background:var(--tan);margin:10px auto}
+.fstep h3{font-size:1.05rem;font-weight:900;color:var(--espresso);margin-bottom:4px}
+.fstep p{font-size:.82rem;color:var(--muted)}
+.hint{text-align:center;color:var(--muted);font-size:.78rem;margin-top:-6px;margin-bottom:2px}
+
+/* ---------- 消費 chips ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.chip{background:var(--paper);border:1px solid var(--tan-line);border-radius:16px;padding:16px 10px 14px;width:calc(25% - 12px);min-width:78px;text-align:center}
+.chip .cdot{width:34px;height:34px;border-radius:50%;background:var(--tan);margin:0 auto 8px}
+.chip span{font-size:.92rem;font-weight:700;color:var(--espresso)}
+@media(max-width:460px){.chip{width:calc(33.33% - 8px)}}
+
+/* ---------- Q&A(擔心的問題) ---------- */
+.worries{display:grid;gap:11px}
+.worry{background:var(--paper);border:1px solid var(--tan-line);border-radius:15px;padding:16px 18px;display:flex;gap:13px;align-items:center;font-weight:700;color:var(--espresso);font-size:1rem}
+.worry .q{flex:0 0 auto;width:30px;height:30px;border-radius:50%;background:var(--tan);color:var(--gold);font-family:"Poppins";font-weight:700;display:grid;place-items:center;font-size:.85rem}
+
+/* ---------- 小測驗 ---------- */
+.quiz{background:var(--paper);border:1px solid var(--tan-line);border-radius:var(--radius);padding:26px 22px;box-shadow:var(--shadow)}
+.quiz .qhead{font-weight:900;color:var(--espresso);font-size:1.1rem;margin-bottom:16px}
+.qprogress{font-family:"Poppins";font-size:.78rem;color:var(--muted);margin-bottom:10px;letter-spacing:.05em}
+.qtext{font-weight:900;font-size:1.15rem;color:var(--espresso);margin-bottom:16px;line-height:1.5}
+.qopts{display:grid;gap:10px}
+.qopt{text-align:left;background:var(--paper-2);border:1.5px solid var(--tan-line);border-radius:14px;padding:14px 16px;font-family:inherit;font-size:1rem;color:var(--espresso);cursor:pointer;transition:border-color .15s,background .15s;font-weight:500}
+.qopt:hover{border-color:var(--gold);background:#fff}
+/* 測驗預覽(A-E) */
+.qpreview{display:grid;gap:12px;margin-bottom:6px}
+.qrow{display:flex;gap:14px;align-items:center}
+.qrow .letter{flex:0 0 auto;width:38px;height:38px;border-radius:50%;background:var(--gold);color:#fff;font-family:"Poppins";font-weight:700;display:grid;place-items:center}
+.qrow span{font-weight:700;color:var(--espresso)}
+.qresult{text-align:center}
+.qresult .rtag{display:inline-block;background:var(--gold);color:#fff;font-weight:700;padding:6px 16px;border-radius:999px;margin-bottom:14px;font-size:.9rem}
+.qresult h3{font-size:1.35rem;font-weight:900;color:var(--espresso);margin-bottom:10px}
+.qresult p{color:var(--brown);font-size:1rem;margin-bottom:20px}
+.qmini{background:none;border:none;color:var(--muted);font-family:inherit;font-size:.85rem;text-decoration:underline;cursor:pointer;margin-top:6px}
+
+/* ---------- 按鈕 ---------- */
+.btn{font-family:inherit;font-size:1.05rem;font-weight:900;cursor:pointer;border:none;color:#fff;background:var(--gold);padding:16px 30px;border-radius:16px;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:9px;transition:background .18s,transform .18s,box-shadow .18s;box-shadow:0 14px 26px -14px var(--gold)}
+.btn:hover{background:#916a15;transform:translateY(-2px)}
+.btn .arr{transition:transform .2s}
+.btn:hover .arr{transform:translateX(4px)}
+.btn.block{width:100%}
+.btn-wrap{text-align:center;margin-top:26px}
+
+/* ---------- Slide 10 / 預約 ---------- */
+.finale h2{margin-bottom:8px}
+.finale .lead{text-align:center;color:var(--muted);font-size:1.05rem;margin-bottom:24px}
+.finale .midline{text-align:center;font-weight:900;font-size:1.2rem;color:var(--brown);line-height:1.5;margin-bottom:24px}
+.chain{background:var(--gold-soft);border-radius:var(--radius);padding:22px 20px;text-align:center;margin-bottom:26px}
+.chain .small{color:var(--brown);font-size:.98rem;margin-bottom:8px;font-weight:500}
+.chain .big{color:var(--gold-2);font-weight:900;font-size:1.15rem;letter-spacing:.02em}
+
+/* 表單 */
+.form{background:var(--paper);border:1px solid var(--tan-line);border-radius:var(--radius);padding:24px 20px;box-shadow:var(--shadow);max-width:440px;margin:0 auto}
+.field{margin-bottom:15px}
+.field label{display:block;font-size:.85rem;font-weight:700;margin-bottom:7px;color:var(--espresso)}
+.field label .opt{color:var(--muted);font-weight:400}
+.field input,.field select,.field textarea{width:100%;font-family:inherit;font-size:1rem;color:var(--espresso);padding:13px 14px;border:1.5px solid var(--tan-line);border-radius:12px;background:var(--paper-2);transition:border-color .15s,box-shadow .15s}
+.field textarea{resize:vertical;min-height:70px}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 4px rgba(168,124,28,.15);background:#fff}
+.form .note{text-align:center;color:var(--muted);font-size:.78rem;margin-top:12px}
+
+/* footer */
+footer{background:var(--espresso);color:#d9c7a8;padding:34px 0;text-align:center;font-size:.85rem}
+footer .fb{color:#fff;font-weight:900;font-size:1.05rem;margin-bottom:4px}
+footer .fm{font-family:"Poppins";letter-spacing:.08em;color:#b39c78;font-size:.78rem;margin-top:2px}
+footer .disc{color:#a08a68;font-size:.74rem;max-width:32em;margin:14px auto 0;line-height:1.6}
+
+/* 手機浮動 CTA */
+.sticky{position:fixed;left:0;right:0;bottom:0;z-index:70;padding:11px 16px calc(11px + env(safe-area-inset-bottom));background:rgba(242,234,215,.94);backdrop-filter:blur(9px);border-top:1px solid var(--tan-line);transform:translateY(120%);transition:transform .3s}
+.sticky.show{transform:translateY(0)}
+@media(min-width:721px){.sticky{display:none}}
+
+/* 動效 */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .55s ease,transform .55s ease}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}.reveal{opacity:1!important;transform:none!important;transition:none}.btn,.nav a.cta{transition:none}}
+.toast{position:fixed;left:50%;bottom:88px;translate:-50% 0;transform:translateY(20px);background:var(--espresso);color:#fff;padding:13px 20px;border-radius:999px;font-size:.9rem;box-shadow:var(--shadow);opacity:0;pointer-events:none;transition:opacity .3s,transform .3s;z-index:90;white-space:nowrap}
+.toast.show{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+
+<!-- 頂欄 -->
+<header class="nav">
+  <div class="wrap">
+    <div class="brand"><span class="dot">M</span><span><span id="t-nav-name">杜媽的消費變現模式</span><small id="t-en1">MAMATU</small></span></div>
+    <a href="#book" class="cta">先聊聊</a>
+  </div>
+</header>
+
+<!-- 01 Hero -->
+<section class="slide hero">
+  <div class="wrap">
+    <div class="invite reveal">
+      <div class="avatar"><img id="t-avatar" src="avatar.jpg" alt="邀請人" onerror="this.remove()"><span id="t-avatar-initial">杜</span></div>
+      <div class="invite-pill">由 <b id="t-invite-name">杜媽</b> 邀請你加入 💜</div>
+      <p id="t-intro" style="display:none;text-align:center;color:var(--muted);font-size:1rem;max-width:30em;margin-top:2px"></p>
+    </div>
+    <div class="shead" style="justify-content:center"><span class="eyebrow">Consumer → Owner</span></div>
+    <h1>你每天都在花錢</h1>
+    <p class="h-sub">但大部分的人<br>花完就結束了</p>
+    <p class="body">如果原本就要買的東西<br>可以換一個地方買<br>甚至把自己的消費經驗分享出去<br>慢慢累積成自己的顧客</p>
+    <div class="callout"><b>消費，不一定只是支出</b></div>
+    <p class="foot-line">先從自己原本就會花的錢開始重新整理</p>
+  </div>
+</section>
+
+<!-- 02 三步驟 -->
+<section class="slide">
+  <div class="wrap">
+    <div class="shead reveal"><span class="eyebrow">3 Steps</span></div>
+    <h2 class="reveal">從消費者到經營者</h2>
+    <p class="sub reveal">你只需要 3 個步驟</p>
+    <div class="stack">
+      <div class="rowcard reveal"><span class="circle">01</span><div><h3>自己本來就要買</h3><p>日用品、保養、保健、生活消費</p></div></div>
+      <div class="rowcard reveal"><span class="circle">02</span><div><h3>用過覺得好再分享</h3><p>不用硬推，真實分享才有力量</p></div></div>
+      <div class="rowcard reveal"><span class="circle">03</span><div><h3>慢慢累積自己的顧客</h3><p>從一次購買走向長期服務</p></div></div>
+    </div>
+    <div class="callout reveal"><b>先有消費，再有分享，最後才有生意</b></div>
+  </div>
+</section>
+
+<!-- 03 美安是什麼 -->
+<section class="slide">
+  <div class="wrap">
+    <div class="shead reveal"><span class="eyebrow">About SHOP.COM</span></div>
+    <h2 class="reveal">美安是什麼？</h2>
+    <p class="sub reveal">一個整合消費與創業的超連鎖平台</p>
+    <div class="grid2">
+      <div class="cell reveal"><h3>SHOP.COM</h3><p>線上購物平台</p></div>
+      <div class="cell reveal"><h3>獨家品牌</h3><p>保健・美妝・居家等優質商品</p></div>
+      <div class="cell reveal"><h3>夥伴商店</h3><p>與品牌合作，把生活消費整合進來</p></div>
+      <div class="cell reveal"><h3>超連鎖事業</h3><p>消費＋顧客＋經營，打造被動收入</p></div>
+    </div>
+    <div class="callout reveal"><b>我真正經營的不是商品<br>是一群長期跟我買東西的人</b></div>
+  </div>
+</section>
+
+<!-- 04 零經驗怎麼開始 -->
+<section class="slide">
+  <div class="wrap">
+    <div class="shead reveal"><span class="eyebrow">Start From Zero</span></div>
+    <h2 class="reveal">零經驗怎麼開始？</h2>
+    <p class="sub reveal">從自己使用、分享開始就對了</p>
+    <div class="grid2">
+      <div class="cell numbered reveal"><span class="circle">1</span><div><h3>自己本用</h3><p>日用品逐步換品牌開始</p></div></div>
+      <div class="cell numbered reveal"><span class="circle">2</span><div><h3>找到喜歡的商品</h3><p>真實體驗，建立信任</p></div></div>
+      <div class="cell numbered reveal"><span class="circle">3</span><div><h3>分享使用經驗</h3><p>生活分享，不是硬推銷</p></div></div>
+      <div class="cell numbered reveal"><span class="circle">4</span><div><h3>產生第一個顧客</h3><p>朋友購買，成交自然發生</p></div></div>
+      <div class="cell numbered reveal"><span class="circle">5</span><div><h3>服務與回購</h3><p>顧客滿意，持續回購</p></div></div>
+      <div class="cell numbered reveal"><span class="circle">6</span><div><h3>累積自己的顧客群</h3><p>從消費者變成經營者</p></div></div>
+    </div>
+    <p class="foot-line strong reveal">不用一開始就會做生意<br>先學會當一個會分享的消費者</p>
+  </div>
+</section>
+
+<!-- 05 十年陪跑系統 -->
+<section class="slide">
+  <div class="wrap">
+    <div class="shead reveal"><span class="eyebrow">10 Years System</span></div>
+    <h2 class="reveal"><span id="t-sys-name">杜媽</span> <span id="t-years1">10</span> 年陪跑系統</h2>
+    <p class="sub reveal">新人也能照著走的成功流程</p>
+    <p class="hint reveal">← 左右滑動看完整流程 →</p>
+    <div class="flow reveal">
+      <div class="fstep"><div class="fn">01</div><div class="fdot"></div><h3>找需求</h3><p>從關心開始</p></div>
+      <div class="fstep"><div class="fn">02</div><div class="fdot"></div><h3>學聊天</h3><p>建立關係</p></div>
+      <div class="fstep"><div class="fn">03</div><div class="fdot"></div><h3>體驗分享</h3><p>挑選好商品</p></div>
+      <div class="fstep"><div class="fn">04</div><div class="fdot"></div><h3>零售成交</h3><p>提供建議</p></div>
+      <div class="fstep"><div class="fn">05</div><div class="fdot"></div><h3>回購服務</h3><p>持續關心</p></div>
+      <div class="fstep"><div class="fn">06</div><div class="fdot"></div><h3>經營者</h3><p>建立團隊</p></div>
+    </div>
+    <div class="callout reveal"><b>平台大家都可以加入<br>真正的差別在於加入後有沒有人教</b></div>
+    <p class="foot-line strong reveal">有人回・有人修・有人陪跑</p>
+  </div>
+</section>
+
+<!-- 06 日常消費 -->
+<section class="slide">
+  <div class="wrap">
+    <div class="shead reveal"><span class="eyebrow">Daily Consumption</span></div>
+    <h2 class="reveal">日常消費，其實很多</h2>
+    <p class="sub reveal">把原本就會花的錢，重新整理就好</p>
+    <div class="chips reveal">
+      <div class="chip"><div class="cdot"></div><span>保健</span></div>
+      <div class="chip"><div class="cdot"></div><span>保養</span></div>
+      <div class="chip"><div class="cdot"></div><span>美妝</span></div>
+      <div class="chip"><div class="cdot"></div><span>居家</span></div>
+      <div class="chip"><div class="cdot"></div><span>生活用品</span></div>
+      <div class="chip"><div class="cdot"></div><span>線上購物</span></div>
+      <div class="chip"><div class="cdot"></div><span>夥伴商店</span></div>
+    </div>
+    <div class="callout reveal"><b>先把自己的消費整理好，再談經營<br>才能長久、穩定、輕鬆</b></div>
+  </div>
+</section>
+
+<!-- 07 適合誰 -->
+<section class="slide">
+  <div class="wrap">
+    <div class="shead reveal"><span class="eyebrow">Who's It For</span></div>
+    <h2 class="reveal">哪些人適合這套模式？</h2>
+    <p class="sub reveal">如果你符合其中 2 個，就很適合了解</p>
+    <div class="grid2">
+      <div class="cell reveal"><h3>上班族</h3><p>想增加第二份收入</p></div>
+      <div class="cell reveal"><h3>媽媽族</h3><p>想兼顧家庭與自己的收入</p></div>
+      <div class="cell reveal"><h3>本來就會網購的人</h3><p>想把消費重新整理</p></div>
+      <div class="cell reveal"><h3>喜歡分享的人</h3><p>朋友常問你東西哪裡買</p></div>
+      <div class="cell reveal"><h3>想經營社群的人</h3><p>想把內容慢慢變成生意</p></div>
+      <div class="cell reveal"><h3>零經驗新人</h3><p>願意從零開始學</p></div>
+    </div>
+    <div class="callout reveal"><b>如果你只想「加入就賺錢」，這裡反而不適合你</b></div>
+  </div>
+</section>
+
+<!-- 08 擔心的問題 -->
+<section class="slide">
+  <div class="wrap">
+    <div class="shead reveal"><span class="eyebrow">Q &amp; A</span></div>
+    <h2 class="reveal">你可能正在擔心的問題</h2>
+    <div class="worries" style="margin-top:8px">
+      <div class="worry reveal"><span class="q">Q</span>我沒有人脈，可以做嗎？</div>
+      <div class="worry reveal"><span class="q">Q</span>我不會銷售，可以做嗎？</div>
+      <div class="worry reveal"><span class="q">Q</span>我需要囤貨社群嗎？</div>
+      <div class="worry reveal"><span class="q">Q</span>我怕朋友覺得我在推銷怎麼辦？</div>
+      <div class="worry reveal"><span class="q">Q</span>我平常很忙，這能做嗎？</div>
+      <div class="worry reveal"><span class="q">Q</span>家人不支持怎麼辦？</div>
+      <div class="worry reveal"><span class="q">Q</span>一定要找人加入嗎？</div>
+      <div class="worry reveal"><span class="q">Q</span>到底要花多少錢才能開始？</div>
+    </div>
+    <p class="foot-line strong reveal" style="color:var(--gold-2)">想知道答案？先聊聊，看你知道適不適合你</p>
+  </div>
+</section>
+
+<!-- 09 小測驗 -->
+<section class="slide" id="quiz">
+  <div class="wrap">
+    <div class="shead reveal"><span class="eyebrow">1 Min Test</span></div>
+    <h2 class="reveal">先測，不急著加入</h2>
+    <p class="sub reveal">1 分鐘創業體質小測驗</p>
+    <div class="quiz reveal" id="quizBox">
+      <!-- 起始畫面 -->
+      <div id="quizIntro">
+        <div class="qhead">看看你比較適合：</div>
+        <div class="qpreview">
+          <div class="qrow"><span class="letter">A</span><span>先從消費開始</span></div>
+          <div class="qrow"><span class="letter">B</span><span>零售分享</span></div>
+          <div class="qrow"><span class="letter">C</span><span>社群經營</span></div>
+          <div class="qrow"><span class="letter">D</span><span>建立第二收入</span></div>
+          <div class="qrow"><span class="letter">E</span><span>現階段其實不適合</span></div>
+        </div>
+        <div class="btn-wrap" style="margin-top:22px">
+          <button class="btn block" id="quizStart">開始測驗 <span class="arr">→</span></button>
+        </div>
+      </div>
+      <!-- 題目畫面 -->
+      <div id="quizStage" style="display:none">
+        <div class="qprogress" id="qProgress"></div>
+        <div class="qtext" id="qText"></div>
+        <div class="qopts" id="qOpts"></div>
+      </div>
+      <!-- 結果畫面 -->
+      <div id="quizResult" style="display:none" class="qresult">
+        <span class="rtag" id="rTag"></span>
+        <h3 id="rTitle"></h3>
+        <p id="rDesc"></p>
+        <a href="#book" class="btn block">先聊聊，聽杜媽怎麼說 <span class="arr">→</span></a>
+        <div><button class="qmini" id="quizRetry">重新測一次</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 10 加入前 / 預約 -->
+<section class="slide finale" id="book">
+  <div class="wrap">
+    <div class="shead reveal"><span class="eyebrow">Before You Join</span></div>
+    <h2 class="reveal">我不急著叫你加入</h2>
+    <p class="lead reveal">我更在意你加入後，走不走得下去</p>
+    <p class="midline reveal">我自己走了 <span id="t-years2">10</span> 年<br>知道新人最容易卡在哪裡</p>
+    <div class="chain reveal">
+      <p class="small">你會得到的，不只是「一個帳號」<br>而是有人陪你從：</p>
+      <p class="big">消費 → 分享 → 零售 → 回購 → 經營</p>
+    </div>
+    <div class="form reveal">
+      <div class="field"><label for="f-name">怎麼稱呼你？</label><input id="f-name" type="text" placeholder="例如：小美 / 陳先生" autocomplete="name"></div>
+      <div class="field"><label for="f-contact">LINE ID 或手機</label><input id="f-contact" type="text" placeholder="方便聯絡你的方式"></div>
+      <div class="field"><label for="f-time">方便的時段</label>
+        <select id="f-time"><option>平日晚上</option><option>週末白天</option><option>週末晚上</option><option>平日白天</option><option>都可以，再約</option></select>
+      </div>
+      <div class="field"><label for="f-note">想先了解什麼？ <span class="opt">(選填)</span></label><textarea id="f-note" placeholder="例如：適不適合上班族、要花多少時間…"></textarea></div>
+      <button class="btn block" id="submit">先了解這套模式適不適合我 <span class="arr">→</span></button>
+      <p class="note">送出後會幫你整理好內容，開啟 LINE 直接傳給杜媽。</p>
+    </div>
+    <p class="foot-line reveal" style="margin-top:22px">不急著決定，先了解清楚再說</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fb" id="t-foot-name">杜媽的消費變現模式</div>
+    <div>美安獨立超連鎖店主 · 事業說明預約</div>
+    <div class="fm" id="t-en2">MAMATU</div>
+    <p class="disc">本頁為個人分享，內容所述之經營成果因個人投入與條件而異，不代表任何收入保證，亦不構成投資或收益之承諾。</p>
+  </div>
+</footer>
+
+<div class="sticky" id="sticky"><a href="#book" class="btn block">先了解適不適合我 <span class="arr">→</span></a></div>
+<div class="toast" id="toast"></div>
+
+<script type="module">
+/* ============================================================
+   公版模板：依網址 ?p=夥伴代號 讀取設定並套用；表單寫入 leads
+   需要同資料夾的 firebase-config.js
+   ============================================================ */
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getFirestore, doc, getDoc, collection, addDoc, serverTimestamp, query, where, getDocs, limit }
+  from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import { firebaseConfig } from "./firebase-config.js";
+
+const db = getFirestore(initializeApp(firebaseConfig));
+let partnerId = null;
+let LINE_URL = "";
+
+/* ---------- 讀取夥伴設定 ---------- */
+const pid = new URLSearchParams(location.search).get('p');
+(async function loadPartner(){
+  if(!pid) return;                       // 沒帶代號 → 維持頁面預設(杜媽公版)
+  let data=null, id=null;
+  try{
+    const qs = await getDocs(query(collection(db,'partners'), where('slug','==',pid), limit(1)));
+    if(!qs.empty){ data=qs.docs[0].data(); id=qs.docs[0].id; }
+    else{ const ds=await getDoc(doc(db,'partners',pid)); if(ds.exists()){ data=ds.data(); id=ds.id; } }
+  }catch(e){ console.error('讀取設定失敗',e); }
+  if(!data) return;
+  partnerId=id; apply(data);
+})();
+
+function setText(id,v){ const el=document.getElementById(id); if(el&&v!=null) el.textContent=v; }
+function apply(d){
+  const name=d.name||'杜媽', en=d.brandEN||'MAMATU', years=(d.years??'10');
+  setText('t-nav-name', name+'的消費變現模式');
+  setText('t-en1', en); setText('t-en2', en);
+  setText('t-invite-name', name); setText('t-sys-name', name);
+  setText('t-years1', years); setText('t-years2', years);
+  setText('t-foot-name', name+'的消費變現模式');
+  setText('t-avatar-initial', name.slice(0,1));
+  document.title = name+'的消費變現模式';
+  const av=document.getElementById('t-avatar');
+  if(av){ if(d.avatarUrl){ av.src=d.avatarUrl; } else { av.remove(); } }
+  if(d.intro){ const el=document.getElementById('t-intro'); el.textContent=d.intro; el.style.display='block'; }
+  if(d.color) applyColor(d.color);
+  if(d.line) LINE_URL=d.line;
+}
+/* 依主色推導金色系三階 */
+function applyColor(hex){
+  const s=document.documentElement.style;
+  s.setProperty('--gold',hex);
+  s.setProperty('--gold-2',shade(hex,-10));
+  s.setProperty('--gold-soft',tint(hex,.80));
+}
+function hx(h){h=(h||'').replace('#','');if(h.length===3)h=h.split('').map(c=>c+c).join('');return{r:parseInt(h.slice(0,2),16)||0,g:parseInt(h.slice(2,4),16)||0,b:parseInt(h.slice(4,6),16)||0};}
+function rgb(r,g,b){return '#'+[r,g,b].map(v=>Math.max(0,Math.min(255,Math.round(v))).toString(16).padStart(2,'0')).join('');}
+function shade(hex,pct){const{r,g,b}=hx(hex);const p=pct/100;const c=v=>v+(p<0?v*p:(255-v)*p);return rgb(c(r),c(g),c(b));}
+function tint(hex,a){const{r,g,b}=hx(hex);const c=v=>v+(255-v)*a;return rgb(c(r),c(g),c(b));}
+
+/* ---------- 表單送出：寫入 leads（雲端函式再寄信給夥伴＋副本給你）---------- */
+document.getElementById('submit').onclick=async()=>{
+  const name=f('f-name'),contact=f('f-contact'),time=document.getElementById('f-time').value,note=f('f-note');
+  if(!name||!contact){ toast('麻煩填一下稱呼和聯絡方式 🙏'); return; }
+  if(!partnerId){ toast('這個連結尚未設定完成，請聯絡分享者'); return; }
+  try{
+    await addDoc(collection(db,'leads'),{ partnerId, name, contact, time, note, source:location.href, createdAt:serverTimestamp() });
+    toast('已送出，會盡快跟你聯絡 🙌'); clearForm();
+    if(LINE_URL) setTimeout(()=>window.open(LINE_URL,'_blank'),800);
+  }catch(e){ console.error(e); toast('送出失敗，請稍後再試 🙏'); }
+};
+function f(id){return document.getElementById(id).value.trim();}
+function clearForm(){['f-name','f-contact','f-note'].forEach(i=>document.getElementById(i).value='');}
+
+/* ---------- toast ---------- */
+function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('show'),2600);}
+
+/* ---------- 捲動淡入 ---------- */
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* ---------- 手機浮動 CTA ---------- */
+const sticky=document.getElementById('sticky'),book=document.getElementById('book'),firstSlide=document.querySelector('.slide');
+addEventListener('scroll',()=>{const past=scrollY>firstSlide.offsetHeight*1.2;const atForm=book.getBoundingClientRect().top<innerHeight;sticky.classList.toggle('show',past&&!atForm);},{passive:true});
+
+/* ---------- 小測驗（草稿題目，可請杜媽替換）---------- */
+const QUESTIONS=[
+  {q:"你現在對「多一份收入」的想法，比較接近哪個？",a:[["想先把自己原本的消費整理一下就好","A"],["用得好的東西，想試著分享出去","B"],["想經營自己的社群或內容","C"],["想認真建立第二份收入","D"],["其實只是隨便看看","E"]]},
+  {q:"你現在願意投入的時間大概是？",a:[["幾乎沒有，先了解就好","A"],["每天一點點零碎時間","B"],["願意固定花時間學","D"],["現在完全沒空","E"]]},
+  {q:"對於「分享 / 推薦」，你的感覺是？",a:[["只想自己用，不太想分享","A"],["用得好會自然想跟朋友說","B"],["喜歡經營內容，讓人來問我","C"],["想把分享做成一門生意","D"]]},
+  {q:"下面哪句話，你最有共鳴？",a:[["消費不一定只是支出","A"],["真實分享才有力量","B"],["先有關係，再有生意","C"],["我想加入就馬上賺錢","E"]]}
+];
+const RESULTS={
+  A:{tag:"A 類型",title:"先從消費開始",desc:"你適合先把自己原本的消費整理好，實際感受看看，再決定要不要往下走。不用急。"},
+  B:{tag:"B 類型",title:"零售分享",desc:"你有分享的特質，適合從「用得好再分享」開始，慢慢累積別人對你的信任。"},
+  C:{tag:"C 類型",title:"社群經營",desc:"你喜歡經營關係，適合把內容與社群，慢慢變成屬於自己的生意。"},
+  D:{tag:"D 類型",title:"建立第二收入",desc:"你的方向很明確，適合有系統地建立第二份收入——建議先把細節聊清楚再開始。"},
+  E:{tag:"E 類型",title:"現階段其實不適合",desc:"老實說，如果只想「加入就賺錢」，或現在真的沒有時間，這套模式現階段可能不適合你。這不是壞事，時機到了再說。"}
+};
+let qi=0,score={A:0,B:0,C:0,D:0,E:0};
+const intro=document.getElementById('quizIntro'),stage=document.getElementById('quizStage'),result=document.getElementById('quizResult');
+function renderQ(){const item=QUESTIONS[qi];document.getElementById('qProgress').textContent=`第 ${qi+1} / ${QUESTIONS.length} 題`;document.getElementById('qText').textContent=item.q;const box=document.getElementById('qOpts');box.innerHTML='';item.a.forEach(([label,key])=>{const b=document.createElement('button');b.className='qopt';b.textContent=label;b.onclick=()=>{score[key]++;qi++;qi<QUESTIONS.length?renderQ():showResult();};box.appendChild(b);});}
+function showResult(){stage.style.display='none';result.style.display='block';let best='A',max=-1;['E','A','B','C','D'].forEach(k=>{if(score[k]>max){max=score[k];best=k;}});if(score.E>=2)best='E';const r=RESULTS[best];document.getElementById('rTag').textContent=r.tag;document.getElementById('rTitle').textContent=r.title;document.getElementById('rDesc').textContent=r.desc;}
+document.getElementById('quizStart').onclick=()=>{intro.style.display='none';stage.style.display='block';qi=0;score={A:0,B:0,C:0,D:0,E:0};renderQ();};
+document.getElementById('quizRetry').onclick=()=>{result.style.display='none';intro.style.display='block';};
+</script>
+</body>
+</html>
