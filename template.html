@@ -351,7 +351,7 @@ footer .disc{color:#a08a68;font-size:.74rem;max-width:32em;margin:14px auto 0;li
       </div>
       <div class="field"><label for="f-note">想先了解什麼？ <span class="opt">(選填)</span></label><textarea id="f-note" placeholder="例如：適不適合上班族、要花多少時間…"></textarea></div>
       <button class="btn block" id="submit">先了解這套模式適不適合我 <span class="arr">→</span></button>
-      <p class="note">送出後會幫你整理好內容，開啟 LINE 直接傳給杜媽。</p>
+      <p class="note">送出後會幫你整理好內容，開啟 LINE 直接傳給<span id="t-note-name">杜媽</span>。</p>
     </div>
     <p class="foot-line reveal" style="margin-top:22px">不急著決定，先了解清楚再說</p>
   </div>
@@ -405,6 +405,7 @@ function apply(d){
   setText('t-invite-name', name); setText('t-sys-name', name);
   setText('t-years1', years); setText('t-years2', years);
   setText('t-foot-name', name+'的消費變現模式');
+  setText('t-note-name', name);
   setText('t-avatar-initial', name.slice(0,1));
   document.title = name+'的消費變現模式';
   const av=document.getElementById('t-avatar');
