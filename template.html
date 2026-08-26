@@ -209,7 +209,7 @@ footer .disc{color:#a08a68;font-size:.74rem;max-width:32em;margin:14px auto 0;li
 <section class="slide hero">
   <div class="wrap">
     <div class="invite reveal">
-      <div class="avatar"><img id="t-avatar" src="avatar.jpg" alt="邀請人" onerror="this.remove()"><span id="t-avatar-initial">杜</span></div>
+      <div class="avatar"><img id="t-avatar" alt="邀請人" style="display:none"><span id="t-avatar-initial">杜</span></div>
       <div class="invite-pill">由 <b id="t-invite-name">杜媽</b> 邀請你加入 💜</div>
       <p id="t-intro" style="display:none;text-align:center;color:var(--muted);font-size:1rem;max-width:30em;margin-top:2px"></p>
     </div>
@@ -462,7 +462,16 @@ function apply(d){
   setText('t-avatar-initial', name.slice(0,1));
   document.title = name+'的消費變現模式';
   const av=document.getElementById('t-avatar');
-  if(av){ if(d.avatarUrl){ av.src=d.avatarUrl; } else { av.remove(); } }
+  const avInit=document.getElementById('t-avatar-initial');
+  if(av){
+    if(d.avatarUrl){
+      av.onerror=()=>{ av.style.display='none'; if(avInit) avInit.style.display=''; };
+      av.onload=()=>{ av.style.display=''; if(avInit) avInit.style.display='none'; };
+      av.src=d.avatarUrl;               // 有頭貼才載入，載成功才顯示、蓋住首字
+    } else {
+      av.style.display='none';          // 沒頭貼就維持隱藏，露出名字首字
+    }
+  }
   if(d.intro){ const el=document.getElementById('t-intro'); el.textContent=d.intro; el.style.display='block'; }
   if(d.color) applyColor(d.color);
   if(d.line) LINE_URL=d.line;
