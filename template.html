@@ -298,7 +298,7 @@ footer .disc{color:#a08a68;font-size:.74rem;max-width:32em;margin:14px auto 0;li
         <span class="rtag" id="rTag"></span>
         <h3 id="rTitle"></h3>
         <p id="rDesc"></p>
-        <a href="#book" class="btn block">先聊聊，聽杜媽怎麼說 <span class="arr">→</span></a>
+        <a href="#book" class="btn block">先聊聊，聽<span id="t-quiz-name">杜媽</span>怎麼說 <span class="arr">→</span></a>
         <div><button class="qmini" id="quizRetry">重新測一次</button></div>
       </div>
     </div>
@@ -321,14 +321,6 @@ footer .disc{color:#a08a68;font-size:.74rem;max-width:32em;margin:14px auto 0;li
       <div class="field"><label for="f-contact">LINE ID 或手機</label><input id="f-contact" type="text" placeholder="方便聯絡你的方式"></div>
       <div class="field"><label for="f-time">方便的時段</label>
         <select id="f-time"><option>平日晚上</option><option>週末白天</option><option>週末晚上</option><option>平日白天</option><option>都可以，再約</option></select>
-      </div>
-      <div class="field"><label>想先了解什麼？ <span class="opt">(可複選)</span></label>
-        <div class="checks" id="f-topics">
-          <label class="check"><input type="checkbox" value="我要怎麼開始開購物群？"><span>我要怎麼開始開購物群？</span></label>
-          <label class="check"><input type="checkbox" value="群人數怎麼增加？"><span>群人數怎麼增加？</span></label>
-          <label class="check"><input type="checkbox" value="我是 i 人可以做嗎？"><span>我是 i 人可以做嗎？</span></label>
-          <label class="check"><input type="checkbox" value="我很怕對朋友說我做這個"><span>我很怕對朋友說我做這個</span></label>
-        </div>
       </div>
       <button class="btn block" id="submit">先了解這套模式適不適合我 <span class="arr">→</span></button>
       <p class="note">送出後會幫你整理好內容，開啟 LINE 直接傳給<span id="t-note-name">杜媽</span>。</p>
@@ -386,6 +378,7 @@ function apply(d){
   setText('t-years1', years); setText('t-years2', years);
   setText('t-foot-name', name+'的消費變現模式');
   setText('t-note-name', name);
+  setText('t-quiz-name', name);
   setText('t-avatar-initial', name.slice(0,1));
   document.title = name+'的消費變現模式';
   const av=document.getElementById('t-avatar');
@@ -418,7 +411,7 @@ function tint(hex,a){const{r,g,b}=hx(hex);const c=v=>v+(255-v)*a;return rgb(c(r)
 /* ---------- 表單送出：寫入 leads（雲端函式再寄信給夥伴＋副本給你）---------- */
 document.getElementById('submit').onclick=async()=>{
   const name=f('f-name'),contact=f('f-contact'),time=document.getElementById('f-time').value;
-  const note=[...document.querySelectorAll('#f-topics input:checked')].map(x=>x.value).join('、');
+  const note='';
   if(!name||!contact){ toast('麻煩填一下稱呼和聯絡方式 🙏'); return; }
   if(!partnerId){ toast('這個連結尚未設定完成，請聯絡分享者'); return; }
   try{
@@ -428,7 +421,7 @@ document.getElementById('submit').onclick=async()=>{
   }catch(e){ console.error(e); toast('送出失敗，請稍後再試 🙏'); }
 };
 function f(id){return document.getElementById(id).value.trim();}
-function clearForm(){['f-name','f-contact'].forEach(i=>document.getElementById(i).value='');document.querySelectorAll('#f-topics input:checked').forEach(cb=>{cb.checked=false;cb.closest('.check').classList.remove('on');});}
+function clearForm(){['f-name','f-contact'].forEach(i=>document.getElementById(i).value='');}
 
 /* ---------- toast ---------- */
 function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('show'),2600);}
@@ -448,10 +441,6 @@ document.querySelectorAll('.qa>button').forEach(b=>{
     document.querySelectorAll('.qa').forEach(x=>x.classList.remove('open'));
     if(!open) qa.classList.add('open');
   });
-});
-/* ---------- 複選視覺回饋 ---------- */
-document.querySelectorAll('#f-topics .check input').forEach(cb=>{
-  cb.addEventListener('change',()=>cb.closest('.check').classList.toggle('on',cb.checked));
 });
 
 /* ---------- 小測驗（草稿題目，可請杜媽替換）---------- */
