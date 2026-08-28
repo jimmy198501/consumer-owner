@@ -91,6 +91,22 @@ p{overflow-wrap:break-word}
 /* ---- 區塊圖片 ---- */
 .secimg{display:block;width:100%;max-width:var(--wrap);margin:0 auto;height:auto;border-radius:18px;box-shadow:0 16px 34px -24px rgba(69,50,33,.5)}
 
+/* ---- QA 展開 ---- */
+.faq{display:grid;gap:11px;margin-top:8px}
+.qa{background:var(--paper);border:1px solid var(--tan-line);border-radius:15px;overflow:hidden}
+.qa>button{width:100%;text-align:left;background:none;border:none;cursor:pointer;font-family:inherit;padding:16px 48px 16px 16px;font-size:1rem;font-weight:700;color:var(--espresso);position:relative;display:flex;gap:12px;align-items:flex-start;line-height:1.5}
+.qa>button .qi{flex:0 0 auto;width:26px;height:26px;border-radius:50%;background:var(--tan);color:var(--gold);font-family:"Poppins";font-weight:700;display:grid;place-items:center;font-size:.8rem;margin-top:1px}
+.qa>button::after{content:"+";position:absolute;right:17px;top:15px;font-size:1.5rem;color:var(--gold);transition:transform .25s;line-height:1}
+.qa.open>button::after{transform:rotate(45deg)}
+.qa .a{max-height:0;overflow:hidden;transition:max-height .3s ease}
+.qa .a p{padding:0 18px 16px 54px;color:var(--brown);font-size:.95rem;line-height:1.8}
+.qa.open .a{max-height:420px}
+/* 快速提問 */
+.qchips{margin-top:26px;text-align:center}
+.qchips .lead{color:var(--muted);font-size:.95rem;margin-bottom:12px}
+.qchip{display:inline-block;background:var(--paper);border:1px solid var(--tan-line);border-radius:999px;padding:10px 18px;margin:5px;font-family:inherit;font-size:.92rem;color:var(--espresso);cursor:pointer;font-weight:500;transition:border-color .15s,background .15s}
+.qchip:hover{border-color:var(--gold);background:#fff}
+
 /* ---- 頁尾浮水印 ---- */
 .mark{color:var(--muted);font-family:"Poppins";font-size:.72rem;letter-spacing:.05em;text-align:left;padding:6px 0 0}
 
@@ -140,6 +156,22 @@ p{overflow-wrap:break-word}
 .worries{display:grid;gap:11px}
 .worry{background:var(--paper);border:1px solid var(--tan-line);border-radius:15px;padding:16px 18px;display:flex;gap:13px;align-items:center;font-weight:700;color:var(--espresso);font-size:1rem}
 .worry .q{flex:0 0 auto;width:30px;height:30px;border-radius:50%;background:var(--tan);color:var(--gold);font-family:"Poppins";font-weight:700;display:grid;place-items:center;font-size:.85rem}
+
+/* ---------- QA 展開 ---------- */
+document.querySelectorAll('.qa>button').forEach(b=>{
+  b.addEventListener('click',()=>{
+    const qa=b.parentElement, open=qa.classList.contains('open');
+    document.querySelectorAll('.qa').forEach(x=>x.classList.remove('open'));
+    if(!open) qa.classList.add('open');
+  });
+});
+/* ---------- 快速提問：帶入表單並捲到預約 ---------- */
+document.querySelectorAll('.qchip').forEach(c=>{
+  c.addEventListener('click',()=>{
+    const n=document.getElementById('f-note'); if(n) n.value=c.textContent.trim();
+    document.getElementById('book').scrollIntoView({behavior:'smooth'});
+  });
+});
 
 /* ---------- 小測驗 ---------- */
 .quiz{background:var(--paper);border:1px solid var(--tan-line);border-radius:var(--radius);padding:26px 22px;box-shadow:var(--shadow)}
@@ -279,17 +311,22 @@ footer .disc{color:#a08a68;font-size:.74rem;max-width:32em;margin:14px auto 0;li
   <div class="wrap">
     <div class="shead reveal"><span class="eyebrow">Q &amp; A</span></div>
     <h2 class="reveal">你可能正在擔心的問題</h2>
-    <div class="worries" style="margin-top:8px">
-      <div class="worry reveal"><span class="q">Q</span>我沒有人脈，可以做嗎？</div>
-      <div class="worry reveal"><span class="q">Q</span>我不會銷售，可以做嗎？</div>
-      <div class="worry reveal"><span class="q">Q</span>我需要囤貨社群嗎？</div>
-      <div class="worry reveal"><span class="q">Q</span>我怕朋友覺得我在推銷怎麼辦？</div>
-      <div class="worry reveal"><span class="q">Q</span>我平常很忙，這能做嗎？</div>
-      <div class="worry reveal"><span class="q">Q</span>家人不支持怎麼辦？</div>
-      <div class="worry reveal"><span class="q">Q</span>一定要找人加入嗎？</div>
-      <div class="worry reveal"><span class="q">Q</span>到底要花多少錢才能開始？</div>
+    <div class="faq">
+      <div class="qa reveal"><button><span class="qi">Q</span>我沒有人脈，可以做嗎？</button><div class="a"><p>當然可以啊，我跟你原本也是陌生人，我們現在不就認識了😊<br>現在有社群、自媒體，認識新朋友的方式很多。<br>重點不是你認識多少人，是你願不願意開始認識人。</p></div></div>
+      <div class="qa reveal"><button><span class="qi">Q</span>我不會銷售，可以做嗎？</button><div class="a"><p>可以啊，一開始不會很正常。<br>也不是要你馬上很會賣，而是先學聊天、了解需求、分享自己的使用經驗。<br>這些都有方法，也有人陪你一起練。</p></div></div>
+      <div class="qa reveal"><button><span class="qi">Q</span>我需要囤貨嗎？</button><div class="a"><p>不用，這也是我當初很喜歡這個模式的原因。<br>不用先買一堆東西放家裡，再煩惱怎麼賣掉。<br>有需要再買，不用自己扛庫存壓力。</p></div></div>
+      <div class="qa reveal"><button><span class="qi">Q</span>我怕朋友覺得我在推銷，怎麼辦？</button><div class="a"><p>我自己也很不喜歡被推銷，所以我完全懂😂<br>不是看到朋友就丟商品，而是先了解他有沒有需要。<br>有需要再分享，沒需要就不要硬推。</p></div></div>
+      <div class="qa reveal"><button><span class="qi">Q</span>我平常很忙，這能做嗎？</button><div class="a"><p>可以啊，很多人一開始都有工作、有家庭。<br>不用辭職，可以先用原本零碎的時間慢慢做。<br>先找到適合自己的節奏，比一次做很多更重要。</p></div></div>
+      <div class="qa reveal"><button><span class="qi">Q</span>家人不支持怎麼辦？</button><div class="a"><p>這很正常，因為不了解，本來就容易擔心。<br>所以不用急著說服家人，先把自己在做什麼弄懂、認真做看看。<br>很多事情，做出來比解釋半天更有用。</p></div></div>
+      <div class="qa reveal"><button><span class="qi">Q</span>一定要找人加入嗎？</button><div class="a"><p>不用一開始就急著找人。<br>你可以先從自己使用、分享、服務客人開始，等真的有人對這個方式有興趣，再跟他聊。<br>先把自己做懂，比急著找人更重要。</p></div></div>
     </div>
-    <p class="foot-line strong reveal" style="color:var(--gold-2)">想知道答案？先聊聊，看你知道適不適合你</p>
+    <div class="qchips reveal">
+      <p class="lead">還有這些也常被問到，點一下就能直接問 👇</p>
+      <button class="qchip">我要怎麼開始開購物群？</button>
+      <button class="qchip">群人數怎麼增加？</button>
+      <button class="qchip">我是 i 人可以做嗎？</button>
+      <button class="qchip">我很怕對朋友說我做這個</button>
+    </div>
   </div>
 </section>
 
