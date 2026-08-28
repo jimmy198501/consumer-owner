@@ -91,88 +91,6 @@ p{overflow-wrap:break-word}
 /* ---- 區塊圖片 ---- */
 .secimg{display:block;width:100%;max-width:var(--wrap);margin:0 auto;height:auto;border-radius:18px;box-shadow:0 16px 34px -24px rgba(69,50,33,.5)}
 
-/* ---- QA 展開 ---- */
-.faq{display:grid;gap:11px;margin-top:8px}
-.qa{background:var(--paper);border:1px solid var(--tan-line);border-radius:15px;overflow:hidden}
-.qa>button{width:100%;text-align:left;background:none;border:none;cursor:pointer;font-family:inherit;padding:16px 48px 16px 16px;font-size:1rem;font-weight:700;color:var(--espresso);position:relative;display:flex;gap:12px;align-items:flex-start;line-height:1.5}
-.qa>button .qi{flex:0 0 auto;width:26px;height:26px;border-radius:50%;background:var(--tan);color:var(--gold);font-family:"Poppins";font-weight:700;display:grid;place-items:center;font-size:.8rem;margin-top:1px}
-.qa>button::after{content:"+";position:absolute;right:17px;top:15px;font-size:1.5rem;color:var(--gold);transition:transform .25s;line-height:1}
-.qa.open>button::after{transform:rotate(45deg)}
-.qa .a{max-height:0;overflow:hidden;transition:max-height .3s ease}
-.qa .a p{padding:0 18px 16px 54px;color:var(--brown);font-size:.95rem;line-height:1.8}
-.qa.open .a{max-height:420px}
-/* 快速提問 */
-.qchips{margin-top:26px;text-align:center}
-.qchips .lead{color:var(--muted);font-size:.95rem;margin-bottom:12px}
-.qchip{display:inline-block;background:var(--paper);border:1px solid var(--tan-line);border-radius:999px;padding:10px 18px;margin:5px;font-family:inherit;font-size:.92rem;color:var(--espresso);cursor:pointer;font-weight:500;transition:border-color .15s,background .15s}
-.qchip:hover{border-color:var(--gold);background:#fff}
-
-/* ---- 頁尾浮水印 ---- */
-.mark{color:var(--muted);font-family:"Poppins";font-size:.72rem;letter-spacing:.05em;text-align:left;padding:6px 0 0}
-
-/* ---------- Slide 1 Hero ---------- */
-.hero{padding-top:52px}
-.hero h1{font-size:clamp(2.3rem,9.5vw,3.3rem);font-weight:900;text-align:center;margin-bottom:14px}
-.hero .h-sub{text-align:center;font-weight:900;font-size:clamp(1.2rem,5.4vw,1.6rem);color:var(--brown);line-height:1.4;margin-bottom:26px}
-.hero .body{text-align:center;color:var(--muted);font-size:1.05rem;line-height:1.9;margin-bottom:8px}
-
-/* ---------- 3 步驟(直向卡) ---------- */
-.stack{display:grid;gap:14px}
-.rowcard{background:var(--paper);border:1px solid var(--tan-line);border-radius:18px;padding:20px 20px 20px 18px;display:flex;gap:16px;align-items:center;box-shadow:0 12px 26px -22px rgba(69,50,33,.6)}
-.rowcard .circle{flex:0 0 auto;width:52px;height:52px;border-radius:50%;background:var(--tan);color:var(--gold);font-family:"Poppins";font-weight:700;display:grid;place-items:center;font-size:1.05rem}
-.rowcard h3{font-size:1.15rem;font-weight:900;color:var(--espresso);margin-bottom:2px}
-.rowcard p{font-size:.94rem;color:var(--muted)}
-
-/* ---------- 2欄格 ---------- */
-.grid2{display:grid;gap:14px}
-@media(min-width:520px){.grid2{grid-template-columns:1fr 1fr}}
-.cell{background:var(--paper);border:1px solid var(--tan-line);border-radius:18px;padding:22px 18px;text-align:center}
-.cell h3{font-size:1.12rem;font-weight:900;color:var(--espresso);margin-bottom:8px}
-.cell p{font-size:.92rem;color:var(--muted);line-height:1.6}
-/* 帶編號的格子(slide 04/05 flow) */
-.cell.numbered{display:flex;gap:14px;align-items:flex-start;text-align:left}
-.cell.numbered .circle{flex:0 0 auto;width:40px;height:40px;border-radius:50%;background:var(--tan);color:var(--gold);font-family:"Poppins";font-weight:700;display:grid;place-items:center;font-size:.95rem}
-.cell.numbered h3{margin-bottom:2px}
-
-/* ---------- 6步陪跑系統(橫向流程) ---------- */
-.flow{display:flex;gap:12px;overflow-x:auto;padding:4px 2px 14px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
-.flow::-webkit-scrollbar{height:6px}
-.flow::-webkit-scrollbar-thumb{background:var(--tan);border-radius:99px}
-.fstep{flex:0 0 128px;scroll-snap-align:start;background:var(--paper);border:1px solid var(--tan-line);border-radius:18px;padding:18px 12px;text-align:center}
-.fstep .fn{font-family:"Poppins";font-weight:700;color:var(--gold);font-size:.95rem}
-.fstep .fdot{width:40px;height:40px;border-radius:50%;background:var(--tan);margin:10px auto}
-.fstep h3{font-size:1.05rem;font-weight:900;color:var(--espresso);margin-bottom:4px}
-.fstep p{font-size:.82rem;color:var(--muted)}
-.hint{text-align:center;color:var(--muted);font-size:.78rem;margin-top:-6px;margin-bottom:2px}
-
-/* ---------- 消費 chips ---------- */
-.chips{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
-.chip{background:var(--paper);border:1px solid var(--tan-line);border-radius:16px;padding:16px 10px 14px;width:calc(25% - 12px);min-width:78px;text-align:center}
-.chip .cdot{width:34px;height:34px;border-radius:50%;background:var(--tan);margin:0 auto 8px}
-.chip span{font-size:.92rem;font-weight:700;color:var(--espresso)}
-@media(max-width:460px){.chip{width:calc(33.33% - 8px)}}
-
-/* ---------- Q&A(擔心的問題) ---------- */
-.worries{display:grid;gap:11px}
-.worry{background:var(--paper);border:1px solid var(--tan-line);border-radius:15px;padding:16px 18px;display:flex;gap:13px;align-items:center;font-weight:700;color:var(--espresso);font-size:1rem}
-.worry .q{flex:0 0 auto;width:30px;height:30px;border-radius:50%;background:var(--tan);color:var(--gold);font-family:"Poppins";font-weight:700;display:grid;place-items:center;font-size:.85rem}
-
-/* ---------- QA 展開 ---------- */
-document.querySelectorAll('.qa>button').forEach(b=>{
-  b.addEventListener('click',()=>{
-    const qa=b.parentElement, open=qa.classList.contains('open');
-    document.querySelectorAll('.qa').forEach(x=>x.classList.remove('open'));
-    if(!open) qa.classList.add('open');
-  });
-});
-/* ---------- 快速提問：帶入表單並捲到預約 ---------- */
-document.querySelectorAll('.qchip').forEach(c=>{
-  c.addEventListener('click',()=>{
-    const n=document.getElementById('f-note'); if(n) n.value=c.textContent.trim();
-    document.getElementById('book').scrollIntoView({behavior:'smooth'});
-  });
-});
-
 /* ---------- 小測驗 ---------- */
 .quiz{background:var(--paper);border:1px solid var(--tan-line);border-radius:var(--radius);padding:26px 22px;box-shadow:var(--shadow)}
 .quiz .qhead{font-weight:900;color:var(--espresso);font-size:1.1rem;margin-bottom:16px}
@@ -319,15 +237,7 @@ footer .disc{color:#a08a68;font-size:.74rem;max-width:32em;margin:14px auto 0;li
       <div class="qa reveal"><button><span class="qi">Q</span>我平常很忙，這能做嗎？</button><div class="a"><p>可以啊，很多人一開始都有工作、有家庭。<br>不用辭職，可以先用原本零碎的時間慢慢做。<br>先找到適合自己的節奏，比一次做很多更重要。</p></div></div>
       <div class="qa reveal"><button><span class="qi">Q</span>家人不支持怎麼辦？</button><div class="a"><p>這很正常，因為不了解，本來就容易擔心。<br>所以不用急著說服家人，先把自己在做什麼弄懂、認真做看看。<br>很多事情，做出來比解釋半天更有用。</p></div></div>
       <div class="qa reveal"><button><span class="qi">Q</span>一定要找人加入嗎？</button><div class="a"><p>不用一開始就急著找人。<br>你可以先從自己使用、分享、服務客人開始，等真的有人對這個方式有興趣，再跟他聊。<br>先把自己做懂，比急著找人更重要。</p></div></div>
-    </div>
-    <div class="qchips reveal">
-      <p class="lead">還有這些也常被問到，點一下就能直接問 👇</p>
-      <button class="qchip">我要怎麼開始開購物群？</button>
-      <button class="qchip">群人數怎麼增加？</button>
-      <button class="qchip">我是 i 人可以做嗎？</button>
-      <button class="qchip">我很怕對朋友說我做這個</button>
-    </div>
-  </div>
+    </div>  </div>
 </section>
 
 <!-- 09 小測驗 -->
@@ -386,7 +296,14 @@ footer .disc{color:#a08a68;font-size:.74rem;max-width:32em;margin:14px auto 0;li
       <div class="field"><label for="f-time">方便的時段</label>
         <select id="f-time"><option>平日晚上</option><option>週末白天</option><option>週末晚上</option><option>平日白天</option><option>都可以，再約</option></select>
       </div>
-      <div class="field"><label for="f-note">想先了解什麼？ <span class="opt">(選填)</span></label><textarea id="f-note" placeholder="例如：適不適合上班族、要花多少時間…"></textarea></div>
+      <div class="field"><label>想先了解什麼？ <span class="opt">(可複選)</span></label>
+        <div class="checks" id="f-topics">
+          <label class="check"><input type="checkbox" value="我要怎麼開始開購物群？"><span>我要怎麼開始開購物群？</span></label>
+          <label class="check"><input type="checkbox" value="群人數怎麼增加？"><span>群人數怎麼增加？</span></label>
+          <label class="check"><input type="checkbox" value="我是 i 人可以做嗎？"><span>我是 i 人可以做嗎？</span></label>
+          <label class="check"><input type="checkbox" value="我很怕對朋友說我做這個"><span>我很怕對朋友說我做這個</span></label>
+        </div>
+      </div>
       <button class="btn block" id="submit">先了解這套模式適不適合我 <span class="arr">→</span></button>
       <p class="note">送出後會幫你整理好內容，開啟 LINE 直接傳給<span id="t-note-name">杜媽</span>。</p>
     </div>
@@ -474,7 +391,8 @@ function tint(hex,a){const{r,g,b}=hx(hex);const c=v=>v+(255-v)*a;return rgb(c(r)
 
 /* ---------- 表單送出：寫入 leads（雲端函式再寄信給夥伴＋副本給你）---------- */
 document.getElementById('submit').onclick=async()=>{
-  const name=f('f-name'),contact=f('f-contact'),time=document.getElementById('f-time').value,note=f('f-note');
+  const name=f('f-name'),contact=f('f-contact'),time=document.getElementById('f-time').value;
+  const note=[...document.querySelectorAll('#f-topics input:checked')].map(x=>x.value).join('、');
   if(!name||!contact){ toast('麻煩填一下稱呼和聯絡方式 🙏'); return; }
   if(!partnerId){ toast('這個連結尚未設定完成，請聯絡分享者'); return; }
   try{
@@ -484,7 +402,7 @@ document.getElementById('submit').onclick=async()=>{
   }catch(e){ console.error(e); toast('送出失敗，請稍後再試 🙏'); }
 };
 function f(id){return document.getElementById(id).value.trim();}
-function clearForm(){['f-name','f-contact','f-note'].forEach(i=>document.getElementById(i).value='');}
+function clearForm(){['f-name','f-contact'].forEach(i=>document.getElementById(i).value='');document.querySelectorAll('#f-topics input:checked').forEach(cb=>{cb.checked=false;cb.closest('.check').classList.remove('on');});}
 
 /* ---------- toast ---------- */
 function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('show'),2600);}
@@ -496,6 +414,19 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 /* ---------- 手機浮動 CTA ---------- */
 const sticky=document.getElementById('sticky'),book=document.getElementById('book'),firstSlide=document.querySelector('.slide');
 addEventListener('scroll',()=>{const past=scrollY>firstSlide.offsetHeight*1.2;const atForm=book.getBoundingClientRect().top<innerHeight;sticky.classList.toggle('show',past&&!atForm);},{passive:true});
+
+/* ---------- QA 展開 ---------- */
+document.querySelectorAll('.qa>button').forEach(b=>{
+  b.addEventListener('click',()=>{
+    const qa=b.parentElement, open=qa.classList.contains('open');
+    document.querySelectorAll('.qa').forEach(x=>x.classList.remove('open'));
+    if(!open) qa.classList.add('open');
+  });
+});
+/* ---------- 複選視覺回饋 ---------- */
+document.querySelectorAll('#f-topics .check input').forEach(cb=>{
+  cb.addEventListener('change',()=>cb.closest('.check').classList.toggle('on',cb.checked));
+});
 
 /* ---------- 小測驗（草稿題目，可請杜媽替換）---------- */
 const QUESTIONS=[
