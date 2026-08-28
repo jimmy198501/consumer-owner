@@ -111,10 +111,11 @@ p{overflow-wrap:break-word}
 
 /* ---- 複選（勾勾在文字前面）---- */
 .checks{display:grid;gap:10px}
-.check{display:flex;align-items:flex-start;gap:11px;background:var(--paper-2);border:1.5px solid var(--tan-line);border-radius:12px;padding:13px 14px;cursor:pointer;transition:border-color .15s,background .15s;font-size:.96rem;color:var(--espresso)}
-.check:hover{border-color:var(--gold)}
-.check.on{border-color:var(--gold);background:#fff}
-.check input{margin-top:2px;width:18px;height:18px;accent-color:var(--gold);flex:0 0 auto;cursor:pointer}
+.checks .check{display:flex;align-items:center;gap:11px;background:var(--paper-2);border:1.5px solid var(--tan-line);border-radius:12px;padding:13px 14px;cursor:pointer;transition:border-color .15s,background .15s;font-size:.96rem;font-weight:500;color:var(--espresso);margin-bottom:0}
+.checks .check:hover{border-color:var(--gold)}
+.checks .check.on{border-color:var(--gold);background:#fff}
+.checks .check input{width:19px;height:19px;min-width:19px;padding:0;margin:0;border:1.5px solid var(--tan-line);border-radius:5px;accent-color:var(--gold);flex:0 0 auto;cursor:pointer;box-shadow:none}
+.checks .check span{font-weight:500;line-height:1.4}
 
 /* ---------- 小測驗 ---------- */
 .quiz{background:var(--paper);border:1px solid var(--tan-line);border-radius:var(--radius);padding:26px 22px;box-shadow:var(--shadow)}
